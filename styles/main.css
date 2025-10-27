@@ -1,18 +1,18 @@
 @import url("reset.css");
-/* This is a custom font from google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap");
+/* Import Google Font: Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* what is :root? https://developer.mozilla.org/en-US/docs/Web/CSS/:root */
 :root {
   /* Define design variables */
   --color-primary: #2b2d42;
-  --color-secondary: #bfc6d2;
-  --color-background: #f5f5f5;
-  --color-accent: #535bf2;
+  --color-secondary: #999faa;
+  --color-background: #dfdbe5;
+  --color-accent: #9179BA;
 
   --border-radius: 0.5rem;
 
-  --font-titles: "Frank Ruhl Libre", serif;
+  /* Fonts */
+  --font-titles: "Poppins", sans-serif;
   --font-body: system-ui, sans-serif; /* system-ui matches the user's system font */
 }
 
@@ -24,11 +24,11 @@ body {
 
 /* Layout */
 main {
-  padding: 2rem;
+  padding: 0.1rem;
 }
 
 header {
-  padding: 1rem;
+  padding: 2rem 2rem 0 2rem;
 }
 
 main,
@@ -74,7 +74,7 @@ h6 {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 3em;
 }
 
 h2 {
@@ -104,11 +104,11 @@ blockquote {
 
 /* Links */
 a {
-  color: var(--color-accent);
-  text-decoration: underline;
+  color: var(--color-secondary);
+  text-decoration: none;
 }
 a:hover {
-  text-decoration: none;
+  color: var(--color-accent);
 }
 
 /* Tables */
@@ -138,21 +138,104 @@ fieldset {
   border: 1px solid var(--color-secondary);
 }
 
-.counter-button {
-  background-color: var(--color-accent);
-  width: 2rem;
-  height: 2rem;
-  color: white;
-  border: none;
-  border-radius: 1000px; /* Make the button round */
+
+footer {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-secondary);
+  border-top: 0.01rem solid var(--color-secondary);
+  max-width: 60rem;
+  margin: 4rem auto 0 auto;
+}
+
+/* Header nav-bar */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem 3rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: var(--font-titles);
+  color: var(--color-secondary);
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* Main content */
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    max-width: 60rem;
+    padding: 2rem 2rem;
+}
+
+/* Profile Image */
+.profile-img {
+  width: 10rem;
+  height: 12rem;
+  border-radius: 3%;
+  object-fit: cover;
+  order: 2;
+  border: 0.1rem solid var(--color-secondary);
+}
+
+.projects-button {
+  display: inline-block;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 12px 20px;
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  font-family: var(--font-titles);
+  transition: transform 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
-  font-weight: bold;
+}
 
-  &:hover {
-    filter: brightness(120%);
-  }
+.projects-button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  transform: translateY(-2px);
+}
 
-  &:active {
-    filter: brightness(80%);
-  }
+/* Social Links Icons */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* gap between the icons*/
+  margin-top: 2rem;
+}
+
+.social-links a {
+  color: var(--color-primary);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--color-accent);
+  transform: scale(1.1); /* enlarges the icon a little */
+}
+
+/* Define SVG icon styles */
+.social-links svg {
+  stroke: currentColor; /* the icon inherits the color from <a> */
+  width: 28px;
+  height: 28px;
 }
