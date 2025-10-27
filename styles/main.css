@@ -6,10 +6,16 @@
   /* Define design variables */
   --color-primary: #2b2d42;
   --color-secondary: #999faa;
-  --color-background: #dfdbe5;
+  --color-background: #e8e4ed;
   --color-accent: #9179BA;
+  --color-accent-hover: #7a63a3;
+  --color-surface: #f5f5f5;     /* This is 'whitesmoke', for card backgrounds */
+  --color-on-accent: #ffffff;    /* This is 'white', for text on accent backgrounds */
 
   --border-radius: 0.5rem;
+
+  --shadow-1: 0 4px 12px rgba(0,0,0,0.05); /* Regular state shadow */
+  --shadow-2: 0 8px 16px rgba(0,0,0,0.08); /* Hover state shadow */
 
   /* Fonts */
   --font-titles: "Poppins", sans-serif;
@@ -238,4 +244,152 @@ footer {
   stroke: currentColor; /* the icon inherits the color from <a> */
   width: 28px;
   height: 28px;
+}
+
+/*
+=========================
+Project Page Styles
+=========================
+*/
+
+.projects-page {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+}
+
+.projects-page h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+/*
+  Selects only the <p> that is a direct child of .projects-page
+  (i.e., not paragraphs inside .project-card)
+*/
+.projects-page > p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+/*
+  .project-grid
+  The layout container for all project cards
+*/
+.project-grid {
+  display: grid;
+  /*
+    This creates a responsive grid without media queries.
+    - auto-fit: Fit as many columns as possible.
+    - minmax(300px, 1fr): Each column is at least 300px wide,
+      but can grow to 1 fraction (1fr) of the available space.
+  */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/*
+  Design single project card
+*/
+.project-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensures rounded corners for child elements */
+  position: relative;
+  padding: 0;
+}
+
+.project-card:hover {
+  /* Creates a subtle "lift" effect on hover */
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-2);
+}
+
+.project-card-content {
+  padding: 0 1.5rem 1.5rem 1.5rem; 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Makes this content area fill the remaining space */
+  position: relative; 
+  z-index: 2;
+  color: var(--color-primary);
+}
+
+.project-card-content h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+.project-card-content p {
+  flex-grow: 1;
+  font-size: 0.9em;
+  color: var(--color-primary);
+}
+
+.project-date {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  display: block;
+}
+
+.project-image {
+  display: block; /* Removes any default bottom spacing */
+  width: calc(100% - 3rem); /* Makes the image fill the card's width */
+  margin: 1.5rem auto 0 auto;
+
+  /* Forces widescreen aspect ratio */
+  aspect-ratio: 2 / 1;
+  /* Ensures the image fills this ratio without distortion */
+  object-fit: cover; 
+  
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--border-radius);
+}
+
+/* Container for the skill "pills" */
+.project-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+/* Styling for a single skill pill */
+.project-skills span {
+  background-color: var(--color-background);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+}
+
+/* project link inside the card*/
+.project-link {
+  display: block;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-family: var(--font-titles);
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.project-link:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-on-accent);
+  text-decoration: none;
 }
