@@ -3,29 +3,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Define design variables */
+  /* === Light Mode Variables (Default) === */
   --color-primary: #2b2d42;
   --color-secondary: #999faa;
-  --color-background: #e8e4ed;
+  --color-background: #ebe7f0;
   --color-accent: #9179BA;
   --color-accent-hover: #7a63a3;
-  --color-surface: #f5f5f5;     /* This is 'whitesmoke', for card backgrounds */
-  --color-on-accent: #ffffff;    /* This is 'white', for text on accent backgrounds */
+  --color-surface: #f5f5f5;     /* For card backgrounds */
+  --color-on-accent: #ffffff;    /* For text on accent backgrounds */
 
   --border-radius: 0.5rem;
 
-  --shadow-1: 0 4px 12px rgba(0,0,0,0.05); /* Regular state shadow */
-  --shadow-2: 0 8px 16px rgba(0,0,0,0.08); /* Hover state shadow */
+  --color-accent-rgb: 145, 121, 186;
+  --shadow-1: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-2: 0 0 25px rgba(var(--color-accent-rgb), 0.4);
 
   /* Fonts */
   --font-titles: "Poppins", sans-serif;
   --font-body: system-ui, sans-serif; /* system-ui matches the user's system font */
 }
 
+/*
+  === Dark Mode Variables ===
+  These will be applied when the <html> tag has the .dark-mode class
+*/
+:root.dark-mode {
+  --color-primary: #EDF2F7;     
+  --color-secondary: #A0AEC0; 
+  --color-background: #1A202C;
+  --color-accent: #9179BA;     
+  --color-accent-hover: #7a63a3;
+  --color-surface: #2D3748;    
+  --color-on-accent: #ffffff;
+  
+  --shadow-1: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-2: 0 8px 16px rgba(0,0,0,0.20);
+}
+
 body {
   color: var(--color-primary);
   background-color: var(--color-background);
   font-family: var(--font-body);
+
+  /* This makes all color changes smooth (for dark mode) */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Layout */
@@ -180,6 +201,11 @@ footer {
   text-decoration: none;
 }
 
+.nav-links a.active {
+  color: var(--color-accent);
+  font-weight: 500; /* You can make it bolder if you like */
+}
+
 /* Main content */
 .about-content {
     display: flex;
@@ -193,8 +219,8 @@ footer {
 
 /* Profile Image */
 .profile-img {
-  width: 10rem;
-  height: 12rem;
+  width: 12rem;
+  height: 14rem;
   border-radius: 3%;
   object-fit: cover;
   order: 2;
@@ -308,9 +334,14 @@ Project Page Styles
 }
 
 .project-card:hover {
-  /* Creates a subtle "lift" effect on hover */
+  /* "lift" effect */
   transform: translateY(-5px);
   box-shadow: var(--shadow-2);
+}
+
+/* the image zoom effect */
+.project-card:hover .project-image {
+  transform: scale(1.03); /* Makes the image grow slightly */
 }
 
 .project-card-content {
@@ -353,6 +384,7 @@ Project Page Styles
   
   border: 1px solid var(--color-secondary);
   border-radius: var(--border-radius);
+  transition: transform 0.3s ease-out;
 }
 
 /* Container for the skill "pills" */
@@ -373,23 +405,105 @@ Project Page Styles
   color: var(--color-primary);
 }
 
+/*
+  Wrapper for the button(s) at the bottom of the card
+*/
+.project-link-group {
+  display: flex; /* This arranges the buttons in a row */
+  gap: 1rem;     
+  margin-top: 1rem;
+}
+
 /* project link inside the card*/
 .project-link {
+  flex: 1;
   display: block;
-  background-color: var(--color-accent);
-  color: var(--color-on-accent);
   padding: 0.75rem 1rem;
-  margin-top: 1rem;
   border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: 500;
   font-family: var(--font-titles);
-  transition: background-color 0.2s ease;
   text-align: center;
+  border: 2px solid transparent; 
+  transition: all 0.2s ease;
 }
 
-.project-link:hover {
-  background-color: var(--color-accent-hover);
+/*
+  Style for the PRIMARY button (filled)
+*/
+.project-link.primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-on-accent);
-  text-decoration: none;
+}
+
+.project-link.primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-on-accent);
+}
+
+/*
+  Style for the SECONDARY button (outline)
+*/
+.project-link.secondary {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.project-link.secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+/*
+=========================
+Theme Toggle Button
+=========================
+*/
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/*
+  Styling for the theme toggle button itself
+*/
+.theme-toggle-button {
+  background: none; /* No background */
+  border: none; /* No border */
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: 0.5rem; /* Make the click area a bit bigger */
+  border-radius: 50%; /* Make it round */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-on-accent); /* White text on hover */
+}
+
+.theme-toggle-button.active {
+  background-color: var(--color-accent-hover);
+  color: var(--color-on-accent); /* White text on hover */
+}
+
+/*
+  Make the SVG icon inside the button behave
+*/
+.theme-toggle-button svg {
+  stroke: currentColor; /* The icon inherits the color from the button */
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* For dark-mode */
+/* We also want cards and other surfaces to transition smoothly */
+.project-card, .profile-img, .projects-button, .project-skills span {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

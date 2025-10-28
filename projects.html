@@ -5,6 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/n-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noam Maoz</title>
+    <script> 
+      // This script runs BEFORE the page renders
+      (function() {
+        // Check localStorage for a saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      })();
+    </script>
     <link href="/styles/main.css" rel="stylesheet" />
   </head>
 
@@ -16,6 +26,10 @@
         <a href="/index.html">About</a>
         <a href="/projects.html">Projects</a>
       </div>
+
+      <button class="theme-toggle-button" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
     </nav>
     </header>
 
@@ -23,30 +37,10 @@
     <main>
     <div class="projects-page">
       <h1>My Projects</h1>
-      <p>Here are some of the projects I've been working on.</p>
+      <p>Here are some of the projects I've been working on!</p>
 
       <div class="project-grid">
         
-            <div class="project-card">
-                <img 
-                    src="/images/drawing-app-img.jpg" 
-                    alt="Vector Drawing App Preview" 
-                    class="project-image"
-                />
-                
-                <div class="project-card-content">
-                    <span class="project-date">Dec 2024</span>
-                    <h3>Vector Drawing App</h3>
-                    <p>A simplified vector graphics editor. <br />
-                    Allows users to draw, edit, and manipulate vector-based shapes, text, and images through an intuitive interface.</p>
-                    
-                    <div class="project-skills">
-                        <span>Python</span>
-                    </div>
-                    <a href="https://github.com/noammaoz1/Vector-Drawing-App/blob/main/README.md" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
-                </div>
-            </div>
-
             <div class="project-card">
                 <img 
                     src="/images/covid-19-img.png" 
@@ -64,7 +58,59 @@
                         <span>Tableau</span>
                         <span>Excel</span>
                     </div>
-                    <a href="https://github.com/noammaoz1/COVID-19-in-Israel" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+
+                    <div class="project-link-group">
+                        <a href="https://public.tableau.com/app/profile/noam.maoz8854/viz/Covid-19Dashboard_17577858158690/CovidDashboard" class="project-link primary" target="_blank" rel="noopener noreferrer">View Dashboard</a>
+                        <a href="https://github.com/noammaoz1/COVID-19-in-Israel" class="project-link secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img 
+                    src="/images/yallago-img.jpg" 
+                    alt="yallago Preview" 
+                    class="project-image"
+                />
+                
+                <div class="project-card-content">
+                    <span class="project-date">Jul 2025</span>
+                    <h3>YallaGo</h3>
+                    <p>A social web-app for students that connects them through shared trips.</p>
+                    
+                    <div class="project-skills">
+                        <span>React</span>
+                        <span>CSS</span>
+                        <span>Firebase</span>
+                        <span>Git</span>
+                    </div>
+
+                    <div class="project-link-group">
+                        <a href="https://yallago.onrender.com/" class="project-link primary" target="_blank" rel="noopener noreferrer">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img 
+                    src="/images/study-buddy-img.jpg" 
+                    alt="Study buddy Preview" 
+                    class="project-image"
+                />
+                
+                <div class="project-card-content">
+                    <span class="project-date">Apr 2025</span>
+                    <h3>Study Buddy</h3>
+                    <p>UI/UX design project. Design StudyBuddy, a application with AI assistant, aimed at helping students improve their study process.</p>
+                    
+                    <div class="project-skills">
+                        <span>Figma</span>
+                    </div>
+
+                    <div class="project-link-group">
+                        <a href="https://noammaoz1.wixsite.com/studybuddy-8" class="project-link primary" target="_blank" rel="noopener noreferrer">View Project</a>
+                        <a href="https://github.com/Shiri-Noam-Team/StudyBuddy?tab=readme-ov-file" class="project-link secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
                 </div>
             </div>
 

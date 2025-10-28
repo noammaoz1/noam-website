@@ -5,6 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/n-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noam Maoz</title>
+    <script> 
+      // This script runs BEFORE the page renders
+      (function() {
+        // Check localStorage for a saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      })();
+    </script>
     <link href="/styles/main.css" rel="stylesheet" />
   </head>
 
@@ -16,6 +26,12 @@
         <a href="/index.html">About</a>
         <a href="/projects.html">Projects</a>
       </div>
+
+      <button class="theme-toggle-button" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      </div>
+
     </nav>
     </header>
 
@@ -27,7 +43,9 @@
       <div class="about-text">
         <h1>Hi, I'm Noam</h1>
         <p>I am a MATAR & Statistics and Data Science student at the Hebrew University. <br />
-          I love data, technology, creating web applictions and learning new things.
+          I love data, technology, creating web applications and learning new things. <br />
+          I'm always eager to learn and am open to new opportunities, where I can contribute and grow. <br /><br />
+          Feel free to connect with me on LinkedIn or check out my GitHub profile!
         </p>
 
         <!-- Contact -->
