@@ -203,7 +203,7 @@ footer {
 
 .nav-links a.active {
   color: var(--color-accent);
-  font-weight: 500; /* You can make it bolder if you like */
+  font-weight: 500;
 }
 
 /* Main content */
@@ -473,8 +473,8 @@ Theme Toggle Button
   Styling for the theme toggle button itself
 */
 .theme-toggle-button {
-  background: none; /* No background */
-  border: none; /* No border */
+  background: none;
+  border: none;
   color: var(--color-secondary);
   cursor: pointer;
   padding: 0.5rem; /* Make the click area a bit bigger */
